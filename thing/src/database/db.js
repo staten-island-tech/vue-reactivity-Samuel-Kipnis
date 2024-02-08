@@ -1,21 +1,15 @@
-import 'dotenv/config';
-
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
-const connectionString = process.env.DATABASE_URL;
+const connectionString =
+	'postgres://postgres.umansxxbhipcvahiqhel:Z1Z0RvRdpqqFCMUr@aws-0-us-west-1.pooler.supabase.com:5432/postgres';
 
-// Disable prefetch as it is not supported for "Transaction" pool mode
-export const client = postgres(connectionString, { prepare: false });
-export const db = drizzle(client);
+export function connectDB() {
+	const client = postgres(connectionString);
+	const db = drizzle(client);
+}
 
-console.log(db);
-
-const { data, error } = await supabase.from('items').insert([
-	{
-		title: 'Hello',
-		body: 'this is an epic item',
-		author: 'sam',
-		date: new Date(),
-	},
-]);
+// Access table
+// console.log(names);
+// const result = await db.select().from(names);
+// console.log(result);
