@@ -7,6 +7,8 @@ const connectionString =
 export function connectDB() {
 	const client = postgres(connectionString);
 	const db = drizzle(client);
+
+	return { db, client };
 }
 
 // Access table
