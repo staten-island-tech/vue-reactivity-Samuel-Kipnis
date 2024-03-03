@@ -2,7 +2,7 @@ import insert from './database/insert';
 
 export async function handler(event) {
 	body = JSON.parse(event.body);
-	insert(body.title, body.description).catch((e) => {
+	insert(body.title, body.description, body.price, body.image).catch((e) => {
 		throw new Error('Insert into DB error');
 	});
 

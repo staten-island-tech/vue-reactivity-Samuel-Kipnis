@@ -1,15 +1,14 @@
 import { products } from './schema.js';
 import { connectDB } from './db.js';
 
-export default async function insert(title, description) {
+export default async function insert(title, description, price, image) {
 	const { db, client } = connectDB();
-	await db
-		.insert(products)
-		.values({
-			title: title,
-			description: description,
-			posted_at: new Date().toISOString().toLocaleString('zh-TW'),
-		});
+	await db.insert(products).values({
+		title,
+		description,
+		price,
+		image,
+	});
 
 	// console.log(await db.select().from(products));
 	client.end();

@@ -9,7 +9,7 @@ export async function handler(event) {
 	console.log(data);
 	client.end();
 	return {
-		data,
+		body: data,
 		statusCode: 200,
 	};
 }
