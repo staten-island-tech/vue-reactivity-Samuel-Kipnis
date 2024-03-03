@@ -3,12 +3,15 @@ import { connectDB } from './db.js';
 
 export default async function insert(title, description, price, image) {
 	const { db, client } = connectDB();
-	await db.insert(products).values({
-		title,
-		description,
-		price,
-		image,
-	});
+	await db
+		.insert(products)
+		.values({
+			title,
+			description,
+			price,
+			image,
+		})
+		.catch((e) => console.log(e));
 
 	// console.log(await db.select().from(products));
 	client.end();
